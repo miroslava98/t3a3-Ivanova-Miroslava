@@ -1,9 +1,36 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.T3a3IvanovaMiroslava" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+
+    <style name="TemaBanco" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="fontFamily">@font/robotobold</item>
+
+        <!-- Aplicar el estilo personalizado para MaterialButton -->
+        <item name="materialButtonStyle">@style/CustomMaterialButton</item>
+
+        <!-- Aplicar el estilo personalizado para BottomAppBar -->
+        <item name="bottomAppBarStyle">@style/CustomBottomAppBar</item>
+        <item name="appBarLayoutStyle">@style/CustomAppBarLayout</item>
+        <item name="textInputStyle">@style/CustomTextAppearance</item>
     </style>
 
-    <style name="Theme.T3a3IvanovaMiroslava" parent="Base.Theme.T3a3IvanovaMiroslava" />
+    <style name="CustomMaterialButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/buttons</item>
+    </style>
+
+    <style name="CustomBottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="backgroundTint">@color/appbar</item>
+    </style>
+
+    <style name="CustomAppBarLayout" parent="Widget.MaterialComponents.AppBarLayout.Primary">
+        <item name="backgroundColor">@color/appbar</item>
+    </style>
+
+    <style name="CustomTextAppearance" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/white
+        </item> <!-- Cambia el color de texto según tu diseño -->
+        <item name="android:textSize">16sp
+        </item> <!-- Cambia el tamaño del texto si es necesario -->
+    </style>
+
+
 </resources>

@@ -16,7 +16,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="32dp"
-        android:text="Iniciar Sesión"
+        android:text="@string/iniciar_sesi_n"
         android:textAlignment="center"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +25,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutInputDNI"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -34,7 +33,7 @@
         app:counterEnabled="true"
         app:counterMaxLength="9"
         app:errorEnabled="true"
-        app:helperText="Obligatorio"
+        app:helperText="@string/helper_text"
         app:layout_constraintBottom_toTopOf="@+id/layoutInputPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,14 +42,13 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputDNI"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="DNI"
+            android:layout_height="48dp"
+            android:hint="@string/dni"
             android:maxLength="9" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutInputPassword"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -61,7 +59,7 @@
         app:endIconCheckable="false"
         app:endIconMode="password_toggle"
         app:errorEnabled="true"
-        app:helperText="Obligatorio"
+        app:helperText="@string/helper_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutInputDNI">
@@ -69,8 +67,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
+            android:layout_height="48dp"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:maxLength="6" />
 
@@ -84,7 +82,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="120dp"
-        android:text="Enter"
+        android:text="@string/enter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +103,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="120dp"
-        android:text="Exit"
+        android:text="@string/exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline2"

@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">t3a3-Ivanova-Miroslava</string>
+    <string name="welcome">Welcome</string>
+    <string name="make_transaction">Make transaction</string>
+    <string name="userDNI">X2386337X</string>
+    <string name="iniciar_sesi_n">Log in</string>
+    <string name="helper_text">Mandatory</string>
+    <string name="dni">DNI</string>
+    <string name="password">Password</string>
+    <string name="enter">Enter</string>
+    <string name="exit">Exit</string>
+    <string name="bienvenido_banco">Welcome to my bank</string>
+    <string name="entrar">Login</string>
+    <string name="txt_pos_glob">Global position</string>
+    <string name="txt_mov">Movements</string>
+    <string name="txt_transf">Transfer</string>
+    <string name="txt_cambiarCont">Change password</string>
+    <string name="txt_promo">Promotions</string>
+    <string name="txt_cajeros">ATM</string>
+    <string name="txt_salir">Exit</string>
+    <string name="cambiar_contr">Change password</string>
+    <string name="contr_actual">Current password</string>
+    <string name="repetir_contrN">Repeat password</string>
+    <string name="contrNueva">New password</string>
+</resources>

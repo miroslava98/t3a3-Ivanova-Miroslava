@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,84 +7,166 @@
     android:layout_height="match_parent"
     tools:context=".SaludoActivity">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/idcard"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/imagen"
-                android:layout_width="@dimen/card_img_size"
-                android:layout_height="@dimen/card_img_size"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:src="@android:mipmap/sym_def_app_icon"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textoBienvenida"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/welcome"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imagen"
-                app:layout_constraintTop_toTopOf="@id/imagen" />
-
-            <TextView
-                android:id="@+id/textoUsuarioDNI"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imagen"
-                app:layout_constraintTop_toBottomOf="@id/textoBienvenida" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/coordinatorLayout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/idcard">
+        android:layout_height="649dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
 
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomAppBar"
-            style="@style/Widget.MaterialComponents.BottomAppBar.PrimarySurface"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/idcard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:navigationIcon="@drawable/menu_icon"
-            app:navigationIconTint="@color/white" />
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/white">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imagen"
+                    android:layout_width="@dimen/card_img_size"
+                    android:layout_height="@dimen/card_img_size"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@android:mipmap/sym_def_app_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textoBienvenida"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/welcome"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imagen"
+                    app:layout_constraintTop_toTopOf="@id/imagen" />
+
+                <TextView
+                    android:id="@+id/textoUsuarioDNI"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imagen"
+                    app:layout_constraintTop_toBottomOf="@id/textoBienvenida" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPosicion"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/make_transaction"
-            android:src="@drawable/bank_icon"
-            app:layout_anchor="@id/bottomAppBar" />
+            android:layout_gravity="center_horizontal"
+            android:padding="17dp"
+            android:text="@string/txt_pos_glob"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/global_pos" />
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMovimientos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="17dp"
+            android:text="@string/txt_mov"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/mov" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTransf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="17dp"
+            android:text="@string/txt_transf"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/transf" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContrasenya"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="17dp"
+            android:text="@string/txt_cambiarCont"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/passwd" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPromociones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="17dp"
+            android:text="@string/txt_promo"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/promo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCajeros"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="17dp"
+            android:text="@string/txt_cajeros"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/map" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSalir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="17dp"
+            android:text="@string/txt_salir"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/back" />
+    </LinearLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:navigationIcon="@drawable/menu_icon"
+        app:navigationIconTint="@color/white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/make_transaction"
+        android:src="@drawable/bank_icon"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        app:layout_anchor="@id/bottomAppBar" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
