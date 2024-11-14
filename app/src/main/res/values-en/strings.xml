@@ -22,4 +22,6 @@
     <string name="contr_actual">Current password</string>
     <string name="repetir_contrN">Repeat password</string>
     <string name="contrNueva">New password</string>
+    <string name="aceptar">Accept</string>
+    <string name="cancelar">Cancel</string>
 </resources>

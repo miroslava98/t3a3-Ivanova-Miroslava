@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+
+        <LinearLayout
+            android:id="@+id/item_positionL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPosition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/cardview_dark_background"
+                app:cardCornerRadius="50dp"
+                app:icon="@drawable/menu_icon">
+
+                <ImageView
+                    android:id="@+id/iconView"
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/bank_icon_white" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCuenta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="1123 - 1234 - 132847749823"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtCantidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="1250$"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

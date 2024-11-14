@@ -11,10 +11,10 @@
       <SelectionState runConfigName="SaludoActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="MainActivity">
+      <SelectionState runConfigName="PasswordActivity">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="PasswordActivity">
+      <SelectionState runConfigName="GlobalPosition">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

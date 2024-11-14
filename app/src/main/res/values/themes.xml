@@ -6,7 +6,6 @@
 
         <!-- Aplicar el estilo personalizado para MaterialButton -->
         <item name="materialButtonStyle">@style/CustomMaterialButton</item>
-
         <!-- Aplicar el estilo personalizado para BottomAppBar -->
         <item name="bottomAppBarStyle">@style/CustomBottomAppBar</item>
         <item name="appBarLayoutStyle">@style/CustomAppBarLayout</item>
@@ -15,6 +14,10 @@
 
     <style name="CustomMaterialButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/buttons</item>
+    </style>
+
+    <style name="CancelMaterialButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/cancelBtn</item>
     </style>
 
     <style name="CustomBottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">

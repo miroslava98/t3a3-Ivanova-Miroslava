@@ -2,20 +2,23 @@ package com.example.t3a3_ivanova_miroslava
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.t3a3_ivanova_miroslava.bd.MiBD
+import com.example.t3a3_ivanova_miroslava.bd.MiBancoOperacional
 import com.example.t3a3_ivanova_miroslava.databinding.ActivityPasswordBinding
+import com.example.t3a3_ivanova_miroslava.pojo.Cliente
 import com.google.android.material.snackbar.Snackbar
 
 class PasswordActivity : AppCompatActivity() {
-
+    private lateinit var cliente: Cliente
     private lateinit var binding: ActivityPasswordBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
 
         binding = ActivityPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -57,22 +60,50 @@ class PasswordActivity : AppCompatActivity() {
             }
         }
 
-
         binding.btnCambiarContrasenya.setOnClickListener {
 
             var contrasenyaActual = binding.inputPassword.text.toString()
             val contrasenyaNueva = binding.inputPassword1.text.toString()
             val contrasenyaNuevaRepetir = binding.inputPassword2.text.toString()
 
-            if (contrasenyaActual.isNotEmpty() && contrasenyaNueva.isNotEmpty() && contrasenyaNuevaRepetir.isNotEmpty()) {
-                val intent = Intent(this, SaludoActivity::class.java)
-                startActivity(intent)
+            if (contrasenyaActual.isNotEmpty()
+                && contrasenyaNueva.isNotEmpty()
+                && contrasenyaNuevaRepetir.isNotEmpty()
+            ) {
+                val mbo: MiBancoOperacional? = MiBancoOperacional.getInstance(this)
+                cliente = intent.getSerializableExtra("Cliente") as Cliente
+                cliente.setClaveSeguridad(contrasenyaNueva)
+                val contrasenyaCambiada = mbo?.changePassword(cliente)
+
+                if (contrasenyaCambiada == 1) {
+                    Toast.makeText(
+                        this,
+                        "Contraseña cambiada con exito ${cliente.getClaveSeguridad()}",
+                        Toast.LENGTH_LONG
+                    ).show()
+
+                    binding.inputPassword.text?.clear()
+                    binding.inputPassword1.text?.clear()
+                    binding.inputPassword2.text?.clear()
+
+                    val intent = Intent(this, SaludoActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(
+                        this,
+                        "La contraseña no se ha cambiado",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
             }
         }
         binding.btnCancelarCambioContrasenya.setOnClickListener {
             val intent = Intent(this, SaludoActivity::class.java)
             startActivity(intent)
         }
+
+
 
 
         super.onCreate(savedInstanceState)
