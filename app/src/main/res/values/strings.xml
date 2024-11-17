@@ -24,6 +24,7 @@
     <string name="repetir_contrN">Repetir contraseña</string>
     <string name="aceptar">Aceptar</string>
     <string name="cancelar">Cancelar</string>
+    <string name="ltimos_movimientos">Últimos movimientos:</string>
 
     <string-array name="cuentas">
         <item>ES90-2080-5430-10-12763672</item>

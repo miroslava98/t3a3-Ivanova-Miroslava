@@ -1,5 +1,6 @@
 package com.example.t3a3_ivanova_miroslava
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,20 +25,19 @@ class GlobalPosition : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_global_position)
+        binding = ActivityGlobalPositionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        binding = ActivityGlobalPositionBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         val mbo: MiBancoOperacional? = MiBancoOperacional.getInstance(this)
+        cliente = intent.getSerializableExtra("Cliente") as Cliente
 
         if (mbo != null && cliente != null) {
-            cliente = intent.getSerializableExtra("Cliente") as Cliente
 
             var listaCuentasCliente = mbo?.getCuentas(cliente) as ArrayList<Cuenta>
 
@@ -51,7 +51,10 @@ class GlobalPosition : AppCompatActivity() {
             }
 
         }
-
+        binding.botonVolverAtras.setOnClickListener {
+            val intent = Intent(this, SaludoActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

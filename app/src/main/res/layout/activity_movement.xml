@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GlobalPosition">
+    tools:context=".Movement">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -18,11 +18,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
-        android:id="@+id/tituloPosicionGlobal"
+        android:id="@+id/tituloMovimientos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Posición Global"
+        android:text="Movimientos"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24dp"
@@ -31,30 +31,51 @@
         app:layout_constraintTop_toBottomOf="@id/appbar" />
 
     <TextView
-        android:id="@+id/cuentas"
+        android:id="@+id/movimientos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="16dp"
-        android:text="Cuentas:"
+        android:text="Selecciona la cuenta:"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tituloPosicionGlobal" />
+        app:layout_constraintTop_toBottomOf="@id/tituloMovimientos" />
 
+
+    <Spinner
+        android:id="@+id/spinnerMovements"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/movimientos" />
+
+    <TextView
+        android:id="@+id/txtUltMov"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/ltimos_movimientos"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinnerMovements" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerviewPosition"
-        android:layout_width="0dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/recylclerViewMovement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cuentas"
-        tools:listitem="@layout/item_position"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@id/txtUltMov"
+        tools:listitem="@layout/item_movement" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/botonVolverAtras"

@@ -24,4 +24,5 @@
     <string name="contrNueva">New password</string>
     <string name="aceptar">Accept</string>
     <string name="cancelar">Cancel</string>
+    <string name="ltimos_movimientos">Últimos movimientos:</string>
 </resources>

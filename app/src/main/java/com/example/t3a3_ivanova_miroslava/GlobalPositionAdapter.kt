@@ -3,16 +3,12 @@ package com.example.t3a3_ivanova_miroslava
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.t3a3_ivanova_miroslava.databinding.ItemPositionBinding
 import com.example.t3a3_ivanova_miroslava.pojo.Cuenta
 
-class GlobalPositionAdapter(
-    private val cuentas: ArrayList<Cuenta>
-) :
-    RecyclerView.Adapter<GlobalPositionAdapter.ViewHolder>() {
+class GlobalPositionAdapter(private val cuentas: ArrayList<Cuenta>) :RecyclerView.Adapter<GlobalPositionAdapter.ViewHolder>() {
 
     private lateinit var context: Context
 
