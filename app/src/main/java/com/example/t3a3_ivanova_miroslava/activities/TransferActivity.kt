@@ -1,8 +1,7 @@
-package com.example.t3a3_ivanova_miroslava
+package com.example.t3a3_ivanova_miroslava.activities
 
+import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore.Audio.Radio
-import android.text.Layout
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -17,17 +16,20 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.t3a3_ivanova_miroslava.databinding.ActivitySaludoBinding
+import com.example.t3a3_ivanova_miroslava.R
 import com.example.t3a3_ivanova_miroslava.databinding.ActivityTransferBinding
-import com.google.android.material.snackbar.Snackbar
+
 
 class TransferActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityTransferBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_transfer)
+        binding = ActivityTransferBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -191,17 +193,36 @@ class TransferActivity : AppCompatActivity() {
         val btnEnviar: Button = findViewById(R.id.benviar)
         btnEnviar.setOnClickListener {
 
+            cuentaOrigenSeleccionada = spCuentas.selectedItem.toString()
+            cuentaDestinoSeleccionada = if (esCuentaDestinoSeleccionada) {
+                cuentaIntroducidaEditText.text.toString()
+            } else {
+                spCuentas2.selectedItem.toString()
+            }
+
+            cantidadIntroducida = cantidadIntroducida.toString()
+            divisaSeleccionada = spDivisas.selectedItem.toString()
+            estaCheckeado = checkboxJustiicante.isChecked
+
+
             val mensaje = "Cuenta origen: $cuentaOrigenSeleccionada\n" +
                     "                    \"Cuenta destino: $cuentaDestinoFinal\n" +
                     "                    \"Cantidad: $cantidadIntroducida\n" +
                     "                    \"Divisa: $divisaSeleccionada\n" +
                     "                    \"Justificante: $estaCheckeado"
 
-            val snackbar =
-                Snackbar.make(findViewById(R.id.main), mensaje, Snackbar.LENGTH_INDEFINITE)
-            snackbar.show()
-
+            Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show()
 
         }
+
+
+        //BOTON CANCELAR
+
+        binding.bcancelar.setOnClickListener {
+            val intent = Intent(this, SaludoActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 }
