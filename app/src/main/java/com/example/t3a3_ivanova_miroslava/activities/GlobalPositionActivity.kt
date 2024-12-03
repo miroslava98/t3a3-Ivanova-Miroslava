@@ -36,11 +36,13 @@ class GlobalPositionActivity : AppCompatActivity(), AccountsListener {
 
         val cliente = intent.getSerializableExtra("Cliente") as Cliente
         if (cliente != null) {
-            val frgCuenta = AccountsFragment.newInstance(cliente)
-            accountsFragment.setAccountsListener(this)
 
+            val frgCuenta = AccountsFragment.newInstance(cliente)
             supportFragmentManager.beginTransaction()
                 .add(R.id.frgAccounts, frgCuenta).commit()
+            frgCuenta.setAccountsListener(this)
+
+
 
             ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
                 val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -75,8 +77,12 @@ class GlobalPositionActivity : AppCompatActivity(), AccountsListener {
         if (cuenta != null) {
             val hayMovimiento = supportFragmentManager.findFragmentById(R.id.frgMovements) != null
             if (hayMovimiento) {
+                accountsFragment = AccountsFragment()
+                val transaction = supportFragmentManager.beginTransaction()
 
             }
+        } else {
+            //    movementsFragment = AccountsMovementsFragment.newInstance
         }
     }
 }
