@@ -69,12 +69,7 @@ class MovementActivity : AppCompatActivity() {
                             listaMovimientos =
                                 mbo.getMovimientos(cuentaSeleccionada) as ArrayList<Movimiento>
 
-                            movementAdapter = MovementAdapter(listaMovimientos)
-                            linearLayoutManager = LinearLayoutManager(this@MovementActivity)
-                            binding.recylclerViewMovement.apply {
-                                layoutManager = linearLayoutManager
-                                adapter = movementAdapter
-                            }
+
                         }
                     }
 
@@ -84,10 +79,10 @@ class MovementActivity : AppCompatActivity() {
                 }
             }
         }
-        binding.botonVolverAtras.setOnClickListener {
-            val intent = Intent(this, SaludoActivity::class.java)
-            startActivity(intent)
-        }
+//        binding.botonVolverAtras.setOnClickListener {
+//            val intent = Intent(this, SaludoActivity::class.java)
+//            startActivity(intent)
+//        }
 
     }
 

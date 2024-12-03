@@ -7,16 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.t3a3_ivanova_miroslava.R
 import com.example.t3a3_ivanova_miroslava.databinding.ItemPositionBinding
+import com.example.t3a3_ivanova_miroslava.fragments.AccountsFragment
 import com.example.t3a3_ivanova_miroslava.pojo.Cuenta
 
-class AccountsAdapter(private val cuentas: ArrayList<Cuenta>)
-    :RecyclerView.Adapter<AccountsAdapter.ViewHolder>() {
+class AccountsAdapter(
+    private val cuentas: ArrayList<Cuenta>, private val listener: OnClickAccountListener
+) : RecyclerView.Adapter<AccountsAdapter.ViewHolder>() {
 
     private lateinit var context: Context
-
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = ItemPositionBinding.bind(view) //Vinculamos la vista a nuestro adapter
-    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -28,19 +26,26 @@ class AccountsAdapter(private val cuentas: ArrayList<Cuenta>)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val cuenta = cuentas[position]
+        val cuenta = cuentas.get(position)
         with(holder) {
+            setListener(cuenta)
             if (cuenta != null) {
                 binding.txtCuenta.text = cuenta.getNumeroCuenta()
                 binding.txtCantidad.text = cuenta.getSaldoActual().toString()
-
             }
         }
-
     }
-
     override fun getItemCount(): Int {
         return cuentas.size
     }
 
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ItemPositionBinding.bind(view) //Vinculamos la vista a nuestro adapter
+
+        fun setListener(cuenta: Cuenta) {
+            binding.root.setOnClickListener {
+                listener.onClick(cuenta)
+            }
+        }
+    }
 }

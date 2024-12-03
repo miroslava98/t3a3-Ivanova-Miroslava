@@ -21,16 +21,13 @@ class AccountsFragment : Fragment(), OnClickAccountListener {
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var itemDecoration: DividerItemDecoration
     private lateinit var binding: FragmentAccountsBinding
-
     private lateinit var cliente: Cliente
-
     private lateinit var listener: AccountsListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             cliente = it.getSerializable(ARG_CLIENTE) as Cliente
-
         }
     }
 
@@ -41,14 +38,13 @@ class AccountsFragment : Fragment(), OnClickAccountListener {
         binding = FragmentAccountsBinding.inflate(inflater, container, false)
 
         //Recuperamos el valor de cliente
-
         val mbo: MiBancoOperacional? = MiBancoOperacional.getInstance(context)
 
         val listaCuentas: ArrayList<Cuenta>? =
-            mbo?.getCuentas(cliente as Cliente) as ArrayList<Cuenta>
+            mbo?.getCuentas(cliente as Cliente?) as ArrayList<Cuenta>?
 
 
-        globalPositionAdapter = AccountsAdapter(ArrayList<Cuenta>())
+        globalPositionAdapter = AccountsAdapter(listaCuentas!!, this)
         linearLayoutManager = LinearLayoutManager(context)
         itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
 
@@ -60,18 +56,8 @@ class AccountsFragment : Fragment(), OnClickAccountListener {
         return binding.root
     }
 
-    fun setCuentasListener(listener: AccountsListener) {
-        this.listener = listener
-    }
-
-    override fun onClick(cuenta: Cuenta) {
-        if (listener != null) {
-            listener.onCuentaSeleccionada(cuenta)
-        }
-    }
 
     companion object {
-
         @JvmStatic
         fun newInstance(cliente: Cliente) =
             AccountsFragment().apply {
@@ -79,6 +65,16 @@ class AccountsFragment : Fragment(), OnClickAccountListener {
                     putSerializable(ARG_CLIENTE, cliente)
                 }
             }
+    }
+
+    fun setAccountsListener(listener: AccountsListener) {
+        this.listener = listener
+    }
+
+    override fun onClick(cuenta: Cuenta) {
+        if (listener != null) {
+            listener.onCuentaSeleccionada(cuenta)
+        }
     }
 
 }
