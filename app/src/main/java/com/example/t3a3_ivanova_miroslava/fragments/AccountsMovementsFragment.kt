@@ -1,32 +1,37 @@
 package com.example.t3a3_ivanova_miroslava.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.t3a3_ivanova_miroslava.R
+import com.example.t3a3_ivanova_miroslava.adapters.MovementAdapter
+import com.example.t3a3_ivanova_miroslava.databinding.FragmentAccountsMovementsBinding
+import com.example.t3a3_ivanova_miroslava.pojo.Cliente
+import com.example.t3a3_ivanova_miroslava.pojo.Movimiento
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_MOVIMIENTOS = "movimientos"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AccountsMovementsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AccountsMovementsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var movementAdapter: MovementAdapter
+    private lateinit var linearLayoutManager: LinearLayoutManager
+    private lateinit var itemDecoration: DividerItemDecoration
+    private lateinit var binding: FragmentAccountsMovementsBinding
+
+    private var movimientos: ArrayList<Movimiento> = arrayListOf()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            movimientos = it.getSerializable(ARG_MOVIMIENTOS) as ArrayList<Movimiento>
+            println("ACCOUNTSFRAGMENT :  ${movimientos.size}")
         }
     }
 
@@ -34,27 +39,42 @@ class AccountsMovementsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_accounts_movements, container, false)
+        binding = FragmentAccountsMovementsBinding.inflate(inflater, container, false)
+        Log.d("AccountsMovementsFragment", "onCreateView called")
+        if (movimientos.isEmpty()) {
+            movementAdapter = MovementAdapter(ArrayList())
+            Toast.makeText(context, "No hay movimientos disponibles", Toast.LENGTH_LONG).show()
+        } else {
+            movementAdapter = MovementAdapter(movimientos)
+
+        }
+        linearLayoutManager = LinearLayoutManager(context)
+        itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+
+        binding.recylclerViewMovement.apply {
+            layoutManager = linearLayoutManager
+            adapter = movementAdapter
+            addItemDecoration(itemDecoration)
+        }
+
+        return binding.root
+
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment AccountsMovementsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(movimientos: ArrayList<Movimiento>) =
             AccountsMovementsFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putSerializable(ARG_MOVIMIENTOS, movimientos)
                 }
             }
+    }
+
+    fun mostrarDetalle(movimientos: ArrayList<Movimiento>) {
+        this.movimientos = movimientos
+        if (::movementAdapter.isInitialized) {
+            movementAdapter.notifyDataSetChanged()
+        }
     }
 }

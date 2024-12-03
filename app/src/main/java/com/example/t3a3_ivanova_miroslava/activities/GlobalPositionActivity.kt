@@ -16,9 +16,10 @@ import com.example.t3a3_ivanova_miroslava.databinding.ActivityGlobalPositionBind
 import com.example.t3a3_ivanova_miroslava.fragments.AccountsFragment
 import com.example.t3a3_ivanova_miroslava.fragments.AccountsListener
 import com.example.t3a3_ivanova_miroslava.fragments.AccountsMovementsFragment
+import com.example.t3a3_ivanova_miroslava.fragments.AccountsMovementsFragment.Companion.newInstance
 import com.example.t3a3_ivanova_miroslava.pojo.Cliente
 import com.example.t3a3_ivanova_miroslava.pojo.Cuenta
-
+import com.example.t3a3_ivanova_miroslava.pojo.Movimiento
 
 class GlobalPositionActivity : AppCompatActivity(), AccountsListener {
 
@@ -33,16 +34,16 @@ class GlobalPositionActivity : AppCompatActivity(), AccountsListener {
         binding = ActivityGlobalPositionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        val mbo: MiBancoOperacional? = MiBancoOperacional.getInstance(this)
         val cliente = intent.getSerializableExtra("Cliente") as Cliente
+
+
         if (cliente != null) {
 
             val frgCuenta = AccountsFragment.newInstance(cliente)
             supportFragmentManager.beginTransaction()
                 .add(R.id.frgAccounts, frgCuenta).commit()
             frgCuenta.setAccountsListener(this)
-
-
 
             ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
                 val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -74,15 +75,24 @@ class GlobalPositionActivity : AppCompatActivity(), AccountsListener {
     }
 
     override fun onCuentaSeleccionada(cuenta: Cuenta) {
+
         if (cuenta != null) {
             val hayMovimiento = supportFragmentManager.findFragmentById(R.id.frgMovements) != null
+            var movimientosCuenta =
+                if (cuenta.getListaMovimientos() != null) cuenta.getListaMovimientos() else ArrayList<Movimiento>();
             if (hayMovimiento) {
                 accountsFragment = AccountsFragment()
                 val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.frgAccounts, accountsFragment)
+                transaction.commit()
+                movementsFragment.mostrarDetalle(movimientosCuenta)
+
+            } else {
+                movementsFragment = newInstance(movimientosCuenta)
+                loadFragment(movementsFragment)
+                println("movimientos global activity $cuenta.getListaMovimientos()")
 
             }
-        } else {
-            //    movementsFragment = AccountsMovementsFragment.newInstance
         }
     }
 }

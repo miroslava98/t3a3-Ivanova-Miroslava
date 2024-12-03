@@ -77,6 +77,10 @@ class Cuenta : Serializable {
         return saldoActual
     }
 
+    fun getListaMovimientos(): ArrayList<Movimiento> {
+        return listaMovimientos ?: arrayListOf()
+    }
+
     fun setBanco(banco: String?) {
         this.banco = banco
     }
@@ -97,7 +101,8 @@ class Cuenta : Serializable {
         this.saldoActual = saldoActual
     }
 
-    fun setCliente(cliente: Cliente?){
+    fun setCliente(cliente: Cliente?) {
         this.cliente = cliente
     }
+
 }

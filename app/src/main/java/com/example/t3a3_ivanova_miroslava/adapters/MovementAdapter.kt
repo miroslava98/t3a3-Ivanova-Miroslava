@@ -12,13 +12,7 @@ import com.example.t3a3_ivanova_miroslava.databinding.ItemMovementBinding
 class MovementAdapter(private val movimientos: ArrayList<Movimiento>) :
     RecyclerView.Adapter<MovementAdapter.ViewHolder>() {
 
-
     private lateinit var context: Context
-
-    // ViewHolder class to hold the views for each item
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = ItemMovementBinding.bind(view)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
@@ -42,4 +36,8 @@ class MovementAdapter(private val movimientos: ArrayList<Movimiento>) :
     }
 
 
+    // ViewHolder class to hold the views for each item
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = ItemMovementBinding.bind(view)
+    }
 }
