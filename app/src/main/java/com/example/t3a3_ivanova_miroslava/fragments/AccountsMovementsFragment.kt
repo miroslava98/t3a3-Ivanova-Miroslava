@@ -11,18 +11,20 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.t3a3_ivanova_miroslava.R
 import com.example.t3a3_ivanova_miroslava.adapters.MovementAdapter
+import com.example.t3a3_ivanova_miroslava.adapters.OnClickMovementListener
 import com.example.t3a3_ivanova_miroslava.databinding.FragmentAccountsMovementsBinding
 import com.example.t3a3_ivanova_miroslava.pojo.Cliente
 import com.example.t3a3_ivanova_miroslava.pojo.Movimiento
 
 private const val ARG_MOVIMIENTOS = "movimientos"
 
-class AccountsMovementsFragment : Fragment() {
+class AccountsMovementsFragment : Fragment(), OnClickMovementListener {
 
     private lateinit var movementAdapter: MovementAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var itemDecoration: DividerItemDecoration
     private lateinit var binding: FragmentAccountsMovementsBinding
+    private lateinit var listener: MovementsListener
 
     private var movimientos: ArrayList<Movimiento> = arrayListOf()
 
@@ -42,10 +44,10 @@ class AccountsMovementsFragment : Fragment() {
         binding = FragmentAccountsMovementsBinding.inflate(inflater, container, false)
         Log.d("AccountsMovementsFragment", "onCreateView called")
         if (movimientos.isEmpty()) {
-            movementAdapter = MovementAdapter(ArrayList())
+            movementAdapter = MovementAdapter(ArrayList(), this)
             Toast.makeText(context, "No hay movimientos disponibles", Toast.LENGTH_LONG).show()
         } else {
-            movementAdapter = MovementAdapter(movimientos)
+            movementAdapter = MovementAdapter(movimientos, this)
 
         }
         linearLayoutManager = LinearLayoutManager(context)
@@ -75,6 +77,16 @@ class AccountsMovementsFragment : Fragment() {
         this.movimientos = movimientos
         if (::movementAdapter.isInitialized) {
             movementAdapter.notifyDataSetChanged()
+        }
+    }
+
+    fun setMovementsListener(listener: MovementsListener) {
+        this.listener = listener
+    }
+
+    override fun onClick(movimiento: Movimiento) {
+        if (listener != null) {
+            listener.onMovimientoSeleccionado(movimiento)
         }
     }
 }

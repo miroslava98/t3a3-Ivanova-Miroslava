@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="3dp">
+
+    <!-- Contenedor principal con fondo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:background="@color/design_default_color_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tituloMovimiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Detalle del Movimiento"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Contenedor para imagen y datos del movimiento -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+            <!-- Imagen al lado de los datos -->
+            <ImageView
+                android:id="@+id/imagenCancion"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/money" />
+
+            <!-- Contenedor de la información del movimiento -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- ID Movimiento -->
+                <TextView
+                    android:id="@+id/idMovimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="ID: 12345"
+                    android:textColor="#555555"
+                    android:textSize="14sp" />
+
+                <!-- Tipo Movimiento -->
+                <TextView
+                    android:id="@+id/tipoMovimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Tipo: Movimiento de dinero"
+                    android:textColor="#555555"
+                    android:textSize="14sp" />
+
+                <!-- Fecha Movimiento -->
+                <TextView
+                    android:id="@+id/fechaMovimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Fecha: 04/12/2024"
+                    android:textColor="#555555"
+                    android:textSize="14sp" />
+
+                <!-- Descripción Movimiento -->
+                <TextView
+                    android:id="@+id/descripcionMovimiento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Descripción del movimiento..."
+                    android:textColor="#555555"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

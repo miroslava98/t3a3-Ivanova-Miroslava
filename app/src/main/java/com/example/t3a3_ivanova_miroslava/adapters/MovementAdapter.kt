@@ -8,8 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.t3a3_ivanova_miroslava.pojo.Movimiento
 import com.example.t3a3_ivanova_miroslava.R
 import com.example.t3a3_ivanova_miroslava.databinding.ItemMovementBinding
+import com.example.t3a3_ivanova_miroslava.pojo.Cuenta
 
-class MovementAdapter(private val movimientos: ArrayList<Movimiento>) :
+class MovementAdapter(
+    private val movimientos: ArrayList<Movimiento>,
+    private val listener: OnClickMovementListener
+) :
     RecyclerView.Adapter<MovementAdapter.ViewHolder>() {
 
     private lateinit var context: Context
@@ -27,6 +31,7 @@ class MovementAdapter(private val movimientos: ArrayList<Movimiento>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val movimiento = movimientos.get(position)
         with(holder) {
+            setListener(movimiento)
             if (movimiento != null) {
                 binding.txtMovimiento.text = movimiento.getDescripcion()
                 binding.txtDetalleMovimiento.text =
@@ -39,5 +44,12 @@ class MovementAdapter(private val movimientos: ArrayList<Movimiento>) :
     // ViewHolder class to hold the views for each item
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemMovementBinding.bind(view)
+
+
+        fun setListener(movimiento: Movimiento) {
+            binding.root.setOnClickListener {
+                listener.onClick(movimiento)
+            }
+        }
     }
 }
