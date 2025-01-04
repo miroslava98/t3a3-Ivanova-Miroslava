@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.t3a3_ivanova_miroslava"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.t3a3_ivanova_miroslava"
@@ -49,4 +49,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }

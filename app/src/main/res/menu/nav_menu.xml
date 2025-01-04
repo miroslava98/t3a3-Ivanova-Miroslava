@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/main_home"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_globalpos"
+            android:icon="@drawable/global_pos"
+            android:title="Posición Global" />
+
+        <item
+            android:id="@+id/nav_mov"
+            android:icon="@drawable/mov"
+            android:title="Movimientos" />
+
+
+        <item
+            android:id="@+id/nav_transf"
+            android:icon="@drawable/transf"
+            android:title="Transferencias" />
+        <item
+            android:id="@+id/nav_passwd"
+            android:icon="@drawable/passwd"
+            android:title="Cambiar contraseña" />
+        <item
+            android:id="@+id/nav_promo"
+            android:icon="@drawable/promo"
+            android:title="Promociones" />
+
+        <item
+            android:id="@+id/nav_atm"
+            android:icon="@drawable/map"
+            android:title="Cajeros" />
+        <item
+            android:id="@+id/nav_config"
+            android:icon="@drawable/config"
+            android:title="Configuración" />
+    </group>
+    <item android:title="">
+
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/back"
+                android:title="Logout" />
+        </menu>
+
+    </item>
+
+</menu>

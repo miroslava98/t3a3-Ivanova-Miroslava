@@ -19,9 +19,6 @@
             android:name=".activities.MovementActivity"
             android:exported="false" />
         <activity
-            android:name=".MovementsActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.GlobalPositionActivity"
             android:exported="true" />
         <activity

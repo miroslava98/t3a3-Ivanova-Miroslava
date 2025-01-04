@@ -10,6 +10,7 @@
         <item name="bottomAppBarStyle">@style/CustomBottomAppBar</item>
         <item name="appBarLayoutStyle">@style/CustomAppBarLayout</item>
         <item name="textInputStyle">@style/CustomTextAppearance</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="CustomMaterialButton" parent="Widget.MaterialComponents.Button">
