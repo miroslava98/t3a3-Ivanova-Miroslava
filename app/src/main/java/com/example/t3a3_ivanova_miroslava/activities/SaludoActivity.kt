@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -28,8 +29,17 @@ class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivitySaludoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+
 
         drawerLayout = findViewById<DrawerLayout>(R.id.main)
 
@@ -39,40 +49,38 @@ class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         val navigationView = findViewById<NavigationView>(R.id.navigation_view)
         navigationView.setNavigationItemSelectedListener(this)
 
-        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.open_nav,
+            R.string.close_nav
+        )
 
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+        cliente = intent.getSerializableExtra("Cliente") as? Cliente
 
-
-        cliente = intent.getSerializableExtra("Cliente") as Cliente
-
-        println(cliente?.getNif())
-
-        if (cliente != null) {
-            binding.textoUsuarioDNI.text = "${cliente!!.getNombre()}"
-        } else {
+        cliente?.let {
+            binding.textoUsuarioDNI.text = it.getNombre() ?: "Error"
+        } ?: run {
             binding.textoUsuarioDNI.text = "Error"
         }
 
         //BOTON CUENTAS
 
         binding.btnPosicion.setOnClickListener {
-            if (cliente != null) {
-                val intent = Intent(this, GlobalPositionActivity::class.java)
-                intent.putExtra("Cliente", cliente)
-                startActivity(intent)
-            }
+            val intent = Intent(this, GlobalPositionActivity::class.java)
+            intent.putExtra("Cliente", cliente)
+            startActivity(intent)
         }
 
         //BOTÓN CONTRASEÑA ̣
         binding.btnContrasenya.setOnClickListener {
-            if (cliente != null) {
-                val intent = Intent(this, PasswordActivity::class.java)
-                intent.putExtra("Cliente", cliente)
-                startActivity(intent)
-            }
+            val intent = Intent(this, PasswordActivity::class.java)
+            intent.putExtra("Cliente", cliente)
+            startActivity(intent)
         }
 
         //RECUPERAR CUENTAS DE UN CLIENTE
@@ -89,12 +97,10 @@ class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         //BOTON MOVIMIENTOS
 
         binding.btnMovimientos.setOnClickListener {
-            if (cliente != null) {
-                val intent = Intent(this, MovementActivity::class.java)
-                intent.putExtra("ListaCuentas", cuentasCliente)
-                println("CUENTAS ENVIADAS " + cuentasCliente.toString())
-                startActivity(intent)
-            }
+            val intent = Intent(this, MovementActivity::class.java)
+            intent.putExtra("ListaCuentas", cuentasCliente)
+            println("CUENTAS ENVIADAS " + cuentasCliente.toString())
+            startActivity(intent)
         }
 
         //BOTON TRANSFER
@@ -104,15 +110,30 @@ class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             startActivity(intent)
         }
 
-        enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        TODO("Not yet implemented")
+
+
+        when (item.itemId) {
+            R.id.nav_home -> {
+                //redundancia si ya estamos en saludo activity
+                // no es necesario solo hay que cerrar el DRAWER
+                if (this !is SaludoActivity) {
+                    val intent = Intent(this, SaludoActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+
+            R.id.nav_globalpos -> {
+                val intent = Intent(this, GlobalPositionActivity::class.java)
+                intent.putExtra("Cliente", cliente)
+                startActivity(intent)
+            }
+
+        }
+        drawerLayout.closeDrawer(GravityCompat.START) // Cierra el menú después de la selección
+        return true
     }
 }

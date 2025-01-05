@@ -19,8 +19,19 @@ class PasswordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPasswordBinding
     override fun onCreate(savedInstanceState: Bundle?) {
 
+
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityPasswordBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(binding.main)
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+
 
         binding.inputPassword.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
 
@@ -103,14 +114,5 @@ class PasswordActivity : AppCompatActivity() {
         }
 
 
-
-
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 }

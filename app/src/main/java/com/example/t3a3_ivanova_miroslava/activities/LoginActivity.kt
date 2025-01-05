@@ -18,20 +18,28 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        enableEdgeToEdge()
+        super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        // Set default credentials
-//        binding.inputDNI.setText("22222222B")
-//        // Replace with your default DNI
-//        binding.inputPassword.setText("1234")
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        // Set default credentials
+        binding.inputDNI.setText("22222222B")
+        // Replace with your default DNI
+        binding.inputPassword.setText("1234")
 
         binding.inputDNI.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {
                 if (binding.inputDNI.text?.isEmpty() == true) {
                     binding.layoutInputDNI.error = "Campo DNI no puede estar vacío "
                 } else if (binding.inputDNI.text!!.length < 9) {
-                    binding.layoutInputDNI.error = "Longitud inferior a 9 carac. "
+                    binding.layoutInputDNI.error = "El DNI debe tener 9 caracteres. "
                 } else {
                     binding.layoutInputDNI.error = null
                 }
@@ -77,15 +85,6 @@ class LoginActivity : AppCompatActivity() {
             finishAffinity()
         }
 
-
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
     }
 }

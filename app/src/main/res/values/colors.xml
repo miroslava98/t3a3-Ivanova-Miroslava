@@ -9,4 +9,5 @@
     <color name="cancelBtn">#004981</color>
     <color name="red">#E70822</color>
     <color name="semi_transparent">#80000000</color>
+    <color name="primary_dark">#6200EE</color> <!-- Un color principal oscuro -->
 </resources>

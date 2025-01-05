@@ -10,7 +10,7 @@
     <string name="enter">Acceder</string>
     <string name="exit">Salir</string>
     <string name="bienvenido_banco">Bienvenido/a a mi banco</string>
-    <string name="entrar">ENTRAR</string>
+    <string name="entrar">ACCEDER</string>
     <string name="txt_pos_glob">POSICIÓN GLOBAL</string>
     <string name="txt_mov">MOVIMIENTOS</string>
     <string name="txt_transf">TRANSFERENCIAS</string>
