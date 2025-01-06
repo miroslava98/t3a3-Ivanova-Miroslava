@@ -30,9 +30,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Set default credentials
-        binding.inputDNI.setText("22222222B")
-        // Replace with your default DNI
-        binding.inputPassword.setText("1234")
+//        binding.inputDNI.setText("22222222B")
+//        // Replace with your default DNI
+//        binding.inputPassword.setText("1234")
 
         binding.inputDNI.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {

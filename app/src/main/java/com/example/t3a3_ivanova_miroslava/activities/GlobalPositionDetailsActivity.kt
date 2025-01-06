@@ -19,10 +19,12 @@ import com.example.t3a3_ivanova_miroslava.pojo.Cuenta
 import com.example.t3a3_ivanova_miroslava.pojo.Movimiento
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.w3c.dom.Text
+import kotlin.properties.Delegates
 
 class GlobalPositionDetailsActivity : AppCompatActivity(), MovementsListener {
     private lateinit var binding: ActivityGlobalPositionDetailsBinding
     private lateinit var movementsFragment: AccountsMovementsFragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,38 +32,91 @@ class GlobalPositionDetailsActivity : AppCompatActivity(), MovementsListener {
         binding = ActivityGlobalPositionDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val cuenta = intent.getSerializableExtra("Cuenta") as Cuenta
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        //OBTENER CUENTA DE INTENT
+
+        val cuenta = intent.getSerializableExtra("Cuenta") as Cuenta
         if (cuenta != null) {
-            val mbo: MiBancoOperacional? = MiBancoOperacional.getInstance(this)
+
+            val mbo = MiBancoOperacional.getInstance(this)
             val movimientosCuenta = mbo?.getMovimientos(cuenta) as ArrayList<Movimiento>
 
-            val frgMovimiento = AccountsMovementsFragment.newInstance(movimientosCuenta)
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frgMovements, frgMovimiento).commit()
-            frgMovimiento.setMovementsListener(this)
+            var tipoMovimiento: Int
 
+            binding.bottomNavigation.setOnNavigationItemSelectedListener {
+                it.isChecked = true
+                when (it.itemId) {
+                    R.id.nav_filter_none -> {
+// Acción al seleccionar filtro none
+                        val frgMovimiento = AccountsMovementsFragment.newInstance(movimientosCuenta)
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.frgMovements, frgMovimiento).commit()
+                        frgMovimiento.setMovementsListener(this)
+                        it.isChecked = true
+                        true
+                    }
 
+                    R.id.nav_filter_0 -> {
+// Acción al seleccionar filtro 0
+                        tipoMovimiento = 0
+                        var listaMovimientosTipo =
+                            mbo?.getMovimientosTipo(cuenta, tipoMovimiento) as ArrayList<Movimiento>
+                        val frgMovimiento =
+                            AccountsMovementsFragment.newInstance(listaMovimientosTipo)
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.frgMovements, frgMovimiento).commit()
+                        frgMovimiento.setMovementsListener(this)
+                        it.isChecked = true
+                        true
+                    }
 
+                    R.id.nav_filter_1 -> {
+                        tipoMovimiento = 1
+// Acción al seleccionar filtro 1
+                        var listaMovimientosTipo =
+                            mbo?.getMovimientosTipo(cuenta, tipoMovimiento) as ArrayList<Movimiento>
+                        val frgMovimiento =
+                            AccountsMovementsFragment.newInstance(listaMovimientosTipo)
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.frgMovements, frgMovimiento).commit()
+                        frgMovimiento.setMovementsListener(this)
+                        it.isChecked = true
+                        true
+                    }
 
-            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
+                    R.id.nav_filter_2 -> {
+// Acción al seleccionar filtro 2
+                        tipoMovimiento = 2
+                        var listaMovimientosTipo =
+                            mbo?.getMovimientosTipo(cuenta, tipoMovimiento) as ArrayList<Movimiento>
+                        val frgMovimiento =
+                            AccountsMovementsFragment.newInstance(listaMovimientosTipo)
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.frgMovements, frgMovimiento).commit()
+                        frgMovimiento.setMovementsListener(this)
+                        it.isChecked = true
+                        true
+                    }
+
+                    else -> false
+                }
             }
             if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 if (savedInstanceState == null) {
-                    movementsFragment = frgMovimiento
+                    movementsFragment = AccountsMovementsFragment()
                     loadFragment(movementsFragment, R.id.frgMovements)
                     movementsFragment.mostrarDetalle(movimientosCuenta)
                     movementsFragment.setMovementsListener(this)
                 }
-
             }
         }
-
     }
-
 
     private fun loadFragment(fragment: Fragment, containerId: Int) {
         val transaction = supportFragmentManager.beginTransaction()

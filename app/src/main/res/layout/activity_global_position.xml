@@ -6,14 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/default_color"
     tools:context=".activities.GlobalPositionActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         style="@style/TemaBanco"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:tooltipText="Cuentas" />
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/appbar"
+            android:elevation="4dp"
+            android:theme="@style/TemaBanco"
+            app:navigationIcon="@drawable/menu_icon" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/tituloPosicionGlobal"
@@ -22,7 +33,7 @@
         android:layout_marginTop="20dp"
         android:text="Posición Global"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +46,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:text="Cuentas:"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
     <androidx.fragment.app.FragmentContainerView

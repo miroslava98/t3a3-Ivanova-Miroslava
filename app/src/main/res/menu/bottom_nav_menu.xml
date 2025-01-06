@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_filter_none"
+        android:icon="@drawable/filter_none"
+        android:title="Todos" />
+    <item
+        android:id="@+id/nav_filter_0"
+        android:icon="@drawable/filter_0"
+        android:title="Tipo 0" />
+    <item
+        android:id="@+id/nav_filter_1"
+        android:icon="@drawable/filter_1"
+        android:title="Tipo 1" />
+    <item
+        android:id="@+id/nav_filter_2"
+        android:icon="@drawable/filter_2"
+        android:title="Tipo2" />
+</menu>

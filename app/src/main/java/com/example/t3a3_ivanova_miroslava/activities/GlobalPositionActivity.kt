@@ -12,7 +12,6 @@ import com.example.t3a3_ivanova_miroslava.R
 import com.example.t3a3_ivanova_miroslava.databinding.ActivityGlobalPositionBinding
 import com.example.t3a3_ivanova_miroslava.fragments.AccountsFragment
 import com.example.t3a3_ivanova_miroslava.fragments.AccountsListener
-import com.example.t3a3_ivanova_miroslava.fragments.AccountsMovementsFragment
 import com.example.t3a3_ivanova_miroslava.pojo.Cliente
 import com.example.t3a3_ivanova_miroslava.pojo.Cuenta
 
@@ -20,7 +19,6 @@ class GlobalPositionActivity : AppCompatActivity(), AccountsListener {
 
     private lateinit var binding: ActivityGlobalPositionBinding
     private lateinit var accountsFragment: AccountsFragment
-    private lateinit var movementsFragment: AccountsMovementsFragment
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,9 +39,6 @@ class GlobalPositionActivity : AppCompatActivity(), AccountsListener {
             supportFragmentManager.beginTransaction()
                 .add(R.id.frgAccounts, frgCuenta).commit()
             frgCuenta.setAccountsListener(this)
-
-
-
 
             if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
                 if (savedInstanceState == null) {

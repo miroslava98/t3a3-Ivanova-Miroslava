@@ -12,14 +12,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:src="@drawable/bank_icon" />
+        android:src="@drawable/bank_icon_white"
+        android:backgroundTint="@color/header_color"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:text="Mi Banco"
-        android:textColor="@color/black"
+        android:textColor="@color/header_color"
         android:textStyle="bold" />
 
     <TextView
@@ -28,7 +29,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginBottom="16dp"
         android:text="contact@mibanco.com"
-        android:textColor="@color/black"
+        android:textColor="@color/header_color"
         android:textSize="14sp" />
 
 </LinearLayout>
