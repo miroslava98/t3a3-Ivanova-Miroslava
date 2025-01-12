@@ -25,4 +25,17 @@
     <string name="aceptar">Accept</string>
     <string name="cancelar">Cancel</string>
     <string name="ltimos_movimientos">Últimos movimientos:</string>
+
+
+    <string-array name="codigoidioma">
+        <item>Spanish</item>
+        <item>English</item>
+    </string-array>
+
+    <string-array name="datos">
+        <item>Local Data</item>
+        <item>Web Service</item>
+    </string-array>
 </resources>
+
+

@@ -23,7 +23,6 @@ class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     private lateinit var binding: ActivitySaludoBinding
     private var cliente: Cliente? = null
-    private var cuenta: Cuenta? = null
     private lateinit var drawerLayout: DrawerLayout
 
 
@@ -39,11 +38,9 @@ class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             insets
         }
 
-
-
         drawerLayout = findViewById<DrawerLayout>(R.id.main)
 
-        val toolbar = findViewById<Toolbar>(R.id.bottomAppBar)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         val navigationView = findViewById<NavigationView>(R.id.navigation_view)
@@ -115,7 +112,6 @@ class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
-
         when (item.itemId) {
             R.id.nav_home -> {
                 //redundancia si ya estamos en saludo activity
@@ -129,6 +125,11 @@ class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             R.id.nav_globalpos -> {
                 val intent = Intent(this, GlobalPositionActivity::class.java)
                 intent.putExtra("Cliente", cliente)
+                startActivity(intent)
+            }
+
+            R.id.nav_config -> {
+                val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
             }
 

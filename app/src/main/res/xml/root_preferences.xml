@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:icon="@android:drawable/ic_menu_preferences"
+        app:title="Multimedia">
+        <SwitchPreferenceCompat
+            app:key="reproducirMusica"
+            app:summaryOff="No escuchar la música mientras se ejecuta la aplicación"
+            app:summaryOn="Escuchar música mientras se ejecuta la aplicación"
+            app:title="Música" />
+        <SwitchPreferenceCompat
+            app:key="reproducirVideo"
+            app:summaryOff="No reproducir vídeo al inciar la aplicación"
+            app:summaryOn="Reproducir vídeo mientras se ejecuta la aplicación"
+            app:title="Vídeo de bienvenida" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:icon="@android:drawable/ic_menu_preferences"
+        app:title="Idioma">
+        <ListPreference
+            app:defaultValue="es"
+            app:dialogTitle="Indicar idioma dispositivo"
+            app:entries="@array/idioma"
+            app:entryValues="@array/codigoidioma"
+            app:key="idioma"
+            app:title="Idioma de la aplicación"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        app:icon="@drawable/bank_icon_white"
+        app:title="Datos">
+        <ListPreference
+            app:defaultValue="local"
+            app:dialogTitle="Indicar origen datos"
+            app:entries="@array/datos"
+            app:entryValues="@array/codigodatos"
+            app:key="bbdd"
+            app:title="Origen de los datos"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+</PreferenceScreen>

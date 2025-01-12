@@ -40,6 +40,27 @@
         <item>$</item>
         <item>£</item>
     </string-array>
+
+    <string-array name="codigoidioma">
+        <item>es</item>
+        <item>en</item>
+    </string-array>
+
+    <string-array name="idioma">
+        <item>Español</item>
+        <item>Inglés</item>
+    </string-array>
+
+
+    <string-array name="datos">
+        <item>Datos locales</item>
+        <item>Servicio web</item>
+    </string-array>
+    <string-array name="codigodatos">
+        <item>local</item>
+        <item>web</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 </resources>
