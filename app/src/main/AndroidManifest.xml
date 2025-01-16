@@ -16,9 +16,6 @@
             android:name=".activities.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.SettingsActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.GlobalPositionDetailsActivity"
             android:exported="false" />
         <activity

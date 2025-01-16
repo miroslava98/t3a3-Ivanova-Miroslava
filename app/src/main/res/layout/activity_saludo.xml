@@ -205,10 +205,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/default_color2"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
         app:itemIconTint="@color/cerulean_blue"
-        android:background="@color/default_color2"
         app:itemTextColor="@color/white"
         app:menu="@menu/nav_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>

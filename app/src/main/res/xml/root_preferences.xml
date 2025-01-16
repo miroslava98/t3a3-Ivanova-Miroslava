@@ -30,7 +30,7 @@
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
     <PreferenceCategory
-        app:icon="@drawable/bank_icon_white"
+        app:icon="@android:drawable/ic_menu_compass"
         app:title="Datos">
         <ListPreference
             app:defaultValue="local"

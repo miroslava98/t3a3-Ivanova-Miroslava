@@ -19,8 +19,6 @@ import com.example.t3a3_ivanova_miroslava.pojo.Cuenta
 import com.google.android.material.navigation.NavigationView
 
 class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-
     private lateinit var binding: ActivitySaludoBinding
     private var cliente: Cliente? = null
     private lateinit var drawerLayout: DrawerLayout
@@ -32,11 +30,6 @@ class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         binding = ActivitySaludoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         drawerLayout = findViewById<DrawerLayout>(R.id.main)
 
