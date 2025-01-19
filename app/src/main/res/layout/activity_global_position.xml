@@ -5,26 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/default_color"
+    android:orientation="vertical"
     tools:context=".activities.GlobalPositionActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-        style="@style/TemaBanco"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="@color/appbar"
-            android:elevation="4dp"
-            android:theme="@style/TemaBanco"
-            app:navigationIcon="@drawable/menu_icon" />
-    </com.google.android.material.appbar.AppBarLayout>
+        android:layout_height="56dp"
+        android:background="@color/appbar"
+        android:elevation="4dp"
+        android:theme="@style/TemaBanco"
+        app:navigationIcon="@drawable/menu_icon" />
 
     <TextView
         android:id="@+id/tituloPosicionGlobal"

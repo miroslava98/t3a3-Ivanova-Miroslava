@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:icon="@drawable/atm_toolbar_menu"
+        android:title=" "
+        app:showAsAction="always">
+
+
+        <menu>
+            <item
+                android:id="@+id/nav_actualizar"
+                android:title="Actualizar"
+                app:showAsAction="withText" />
+
+            <item
+                android:id="@+id/nav_borrar"
+                android:title="Eliminar"
+                app:showAsAction="ifRoom" />
+
+        </menu>
+
+
+    </item>
+
+</menu>

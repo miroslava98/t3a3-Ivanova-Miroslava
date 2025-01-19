@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/item_atm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPosition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/default_color2"
+            app:cardCornerRadius="20dp"
+            app:icon="@drawable/menu_icon">
+
+            <ImageView
+                android:id="@+id/iconView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/bank_icon_white" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtNumAtm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="ATM 0"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtAtmDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="20dp"
+                android:text="Carrer del Clariano 1111, 46021 Valencia, Valenciana, España"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/iconView2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="right|center"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/arrow_fwd_white" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</LinearLayout>

@@ -11,15 +11,13 @@ import com.example.t3a3_ivanova_miroslava.fragments.AccountsFragment
 import com.example.t3a3_ivanova_miroslava.pojo.Cuenta
 
 class AccountsAdapter(
-    private val cuentas: ArrayList<Cuenta>, private val listener: OnClickAccountListener
-) : RecyclerView.Adapter<AccountsAdapter.ViewHolder>() {
+    private val cuentas: ArrayList<Cuenta>,
+    private val listener: OnClickAccountListener) :
+    RecyclerView.Adapter<AccountsAdapter.ViewHolder>() {
 
     private lateinit var context: Context
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.item_position, parent, false)
         return ViewHolder(view)
@@ -35,6 +33,7 @@ class AccountsAdapter(
             }
         }
     }
+
     override fun getItemCount(): Int {
         return cuentas.size
     }

@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.t3a3_ivanova_miroslava.AtmApplication
 import com.example.t3a3_ivanova_miroslava.R
 import com.example.t3a3_ivanova_miroslava.bd.MiBancoOperacional
 import com.example.t3a3_ivanova_miroslava.databinding.ActivitySaludoBinding
@@ -58,6 +59,8 @@ class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             binding.textoUsuarioDNI.text = "Error"
         }
 
+      //  AtmApplication.database.AtmDAO()
+
         //BOTON CUENTAS
 
         binding.btnPosicion.setOnClickListener {
@@ -97,6 +100,11 @@ class SaludoActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         binding.btnTransf.setOnClickListener {
             val intent = Intent(this, TransferActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnCajeros.setOnClickListener {
+            val intent = Intent(this, AtmManagmentActivity::class.java)
             startActivity(intent)
         }
 
